@@ -15,7 +15,7 @@ JSP 파일은 .jsp 확장자를 가지며, html과 Java코드가 혼합된 형�
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head>`
     <meta charset="UTF-8">
     <title>Personal Information</title>
 </head>

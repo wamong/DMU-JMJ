@@ -1,0 +1,118 @@
+웹서버 프로그래밍 => 중간고사 범위에 대하여
+
+1~5장까지
+
+4_1, 4_2,5_0,5_1,5_2 총 5과제
+
+- jsp환경, 동작과정
+
+- 기본문법
+
+- request객체,response객체, out객체
+
+
+
+=>시험유형
+
+- 프로그램 결과값작성
+
+- 프로그램 빈 공간 채우기
+
+- OX문제
+
+[6]
+<전달방식>
+
+1. post
+
+ - 헤더파일에 담겨져서 서버로 전송
+
+ - get방식보다 보안이 강하다.
+
+ - 전달 량도 get방식에 비해 많은 양 전달
+
+  -post방식 한글처리 setCharacterEncoding(euc-kr)
+
+
+
+2. get
+
+-  주소입력줄에 표시되어 전달되어 보안에 미흡
+
+- 주소입력줄에 표현할 수 있는 전달 량만 서버로 전송
+
+  하기 때문에 post방식에 비해 전달량이 작다
+
+
+
+-get방식의 한글처리방법
+
+  server.xml 파일내에 대략 66번째 줄(위치 C:\Program Files\apache-tomcat-9.0.37\conf
+
+     이클립스는 sercers 폴더 밑에 톰갯폴더 아래 있음.)
+
+
+
+  <Connector port="8080".......
+
+        URIEncoding="euc-kr"> </Connector>
+
+[7]
+<form method="post" action="ch5_3.jsp">
+
+
+
+ 성명 : <input type="text" name="name" value="kim"><p>
+
+ 학번 : <input type="text" name="studentNum"><p>
+
+성별 :
+
+남자 <input type="radio" name="mw" value="man" checked>
+
+여자 <input type="radio" name="mw" value="woman"><p>
+
+국적 : 
+
+<select name="country">
+
+<option SELECTED value="대한민국">대한민국</option>
+
+<option value="일본">일본</option>
+
+<option value="중국">중국</option>
+
+<option value="터키">터키</option>
+
+<option value="태국">태국</option>
+
+ </select><p>
+
+ 
+
+ <input type="submit" value="보내기">
+
+</form>
+
+[8]
+<h1>If-else Example</h1>
+
+<FORM METHOD=POST ACTION="IfExample.jsp">
+
+이름 : <INPUT TYPE="text" NAME="name"><p>
+
+좋아하는 색깔 : <SELECT NAME="color">
+
+<option value="blue" selected>파란색</option>
+
+<option value="red">붉은색</option>
+
+<option value="orange">오렌지색</option>
+
+<option value="etc">기타</option>
+
+</SELECT><p>
+
+<INPUT TYPE="submit" VALUE="보내기">
+
+</FORM>

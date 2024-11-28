@@ -1,0 +1,734 @@
+-- 인공_데이터베이스(QC) (담당: 김희숙)  12주차 실습(stu): 관계대수
+
+==============================
+[1교시] 실습용(관계대수)(w12)
+
+-- 데이터베이스(QC)(담당: 김희숙) 12주차 수업중실습(stu)
+
+(w12) 1교시: 다음 문제를 엑샐파일에 답안을 작성하시오
+
+       [Quiz 1-1] R1, S1
+       [Quiz 1-2] omember, group_ex
+       [Quiz 1-3] emp. project
+===========================
+      (복습) (조인) freshman, dmember
+       [Quiz 1-1] R1, S1
+       [Quiz 1-2] omember, group_ex
+       [Quiz 1-3] emp. project
+       [Quiz 1-4] R, S
+                               
+    (정회원, 준회원)
+
+       [Quiz 2] department, employee
+-----------------------------------------
+[복습] (조인) freshman, dmember
+
+-- 1. 카티션 프로덕트
+-- 2. 동등조인
+-- 3. 자연조인
+-- 4. 왼쪽외부조인
+-- 5. 오른쪽외부조인
+-- 6. 완전외부조인
+
+/* -------------------------------------- */
+-- 조인 실습용(MySQL)
+drop table if exists freshman;
+drop table if exists dmember;
+
+CREATE TABLE freshman ( 
+   name    VARCHAR(12) NOT NULL ,
+   address  VARCHAR(9)
+);
+
+CREATE TABLE dmember ( 
+   name        VARCHAR(12) NOT NULL ,
+   dept_name VARCHAR(30)
+);
+
+INSERT INTO freshman VALUES('김광식', '서울');
+INSERT INTO freshman VALUES('김현정', '대전');
+INSERT INTO freshman VALUES('조영수', '대전');
+
+INSERT INTO dmember VALUES('김광식', '컴퓨터공학과');
+INSERT INTO dmember VALUES('김현정', '산업공학과');
+INSERT INTO dmember VALUES('이진영', '전자공학과');
+
+SELECT * FROM freshman;
+SELECT * FROM dmember;
+/* -------------------------------------- */
+
+-----------------------------------------
+-- [Quiz 1-1] (관계대수) R1, S1
+
+-- 1. 카티션 프로덕트
+-- 2. 동등 조인
+-- 3. 자연 조인
+
+-- 4. 세타 조인
+select *
+from  R1, S1
+where R1.A >= C;
+
+-----------------------------------------
+/* -------------------------------------- */
+drop table if exists R1;
+drop table if exists S1;
+
+CREATE TABLE R1 (
+	A int ,
+	B int 
+);
+
+CREATE TABLE S1 (
+	A int ,
+	C int ,
+             D int 
+);
+
+INSERT INTO R1 VALUES (1, 4);
+INSERT INTO R1 VALUES (2, 5);
+
+INSERT INTO S1 VALUES (1,3,4);
+INSERT INTO S1 VALUES (2,2,6);
+INSERT INTO S1 VALUES (3,1,9);
+
+select * from r1;
+select * from s1;
+/* -------------------------------------- */
+
+-----------------------------------------
+-- [Quiz 1-2] (외부조인) omember, group_ex
+
+-- 1. 카티션 프로덕트
+-- 2. 동등 조인
+-- 3. 자연 조인
+
+-- 4. 왼쪽 외부 조인
+-- 5. 오른쪽 외부 조인
+-- 6. 완전 외부 조인
+
+/* -------------------------------------- */
+/* 관계대수 (outerjoin01-mysql.sql) */
+
+drop table if exists omember;
+drop table if exists group_ex;
+
+CREATE TABLE omember ( 
+   id         CHAR(3)     NOT NULL ,
+   groupid CHAR(1)
+);
+
+CREATE TABLE group_ex ( 
+   groupid   CHAR(1)   NOT NULL ,
+   position   VARCHAR(12)
+);
+
+INSERT INTO omember VALUES('100', 'A');
+INSERT INTO omember VALUES('101', 'B');
+INSERT INTO omember VALUES('102', 'A');
+INSERT INTO omember VALUES('102', 'F');
+
+INSERT INTO group_ex VALUES('A', '서울');
+INSERT INTO group_ex VALUES('B', '대구');
+INSERT INTO group_ex VALUES('C', '광주');
+INSERT INTO group_ex VALUES('D', '부산');
+INSERT INTO group_ex VALUES('E', '대전');
+
+SELECT * FROM omember;
+SELECT * FROM group_ex;
+/* -------------------------------------- */
+
+-----------------------------------------
+-- [Quiz 1-3] (외부조인) emp. project
+
+-- 1. 카티션 프로덕트
+-- 2. 동등 조인
+-- 3. 자연 조인
+
+-- 4. 왼쪽 외부 조인
+-- 5. 오른쪽 외부 조인
+-- 6. 완전 외부 조인
+/* -------------------------------------- */
+/* 외부조인 실습용 (outerjoin02-mysql.sql) */
+
+drop table if exists emp;
+drop table if exists project;
+
+CREATE TABLE emp ( 
+    ename    VARCHAR(12)  NOT NULL ,
+    pno       int
+);
+
+CREATE TABLE project ( 
+   pno        int                  NOT NULL ,
+   pname    VARCHAR(20)
+);
+
+INSERT INTO emp VALUES('홍길동', 101);
+INSERT INTO emp VALUES('임꺽정', 102);
+INSERT INTO emp VALUES('박찬호', 101);
+INSERT INTO emp VALUES('박찬호', 103);
+INSERT INTO emp VALUES('신동엽', NULL);
+
+INSERT INTO project VALUES(101, '작전중');
+INSERT INTO project VALUES(102, '특공대');
+INSERT INTO project VALUES(103, '유레카');
+INSERT INTO project VALUES(104, '다모여');
+
+SELECT * FROM emp;
+SELECT * FROM project;
+/* -------------------------------------- */
+-----------------------------------------
+-- [Quiz 1-4] (관계대수) R, S
+
+R
+  A      B    C
+ a1     b1   c1
+ a2     b1   c1
+ a3     b1   c2
+ a4     b2   c3
+
+S
+  B      C     D
+  b1    c1   d1
+  b1    c1   d2
+  b2    c2   d3
+
+/* -------------------------------------- */
+drop table if exists R;
+drop table if exists S;
+
+CREATE TABLE R (
+	A char(2) ,
+	B char(2) ,
+              C char(2) 
+);
+
+CREATE TABLE S (
+	B char(2) ,
+	C char(2) ,
+              D char(2) 
+);
+
+INSERT INTO R VALUES ('a1','b1','c1');
+INSERT INTO R VALUES ('a2','b1','c1');
+INSERT INTO R VALUES ('a2','b1','c2');
+INSERT INTO R VALUES ('a4','b2','c3');
+
+INSERT INTO S VALUES ('b1','c1','d1');
+INSERT INTO S VALUES ('b1','c1','d2');
+INSERT INTO S VALUES ('b2','c2','d3');
+
+select * from R;
+select * from S;
+/* -------------------------------------- */
+
+/* -------------------------------------- */
+
+/* -------------------------------------- */
+-----------------------------------------
+# [요약] 관계대수
+[실습 1-1] 관계대수: 집합
+
+-- (MySQL)
+1. 합집합 UNION
+
+-- (문법 지원하지 않음)
+2. 교집합 INTERSECT
+3. 차집합 MINUS (Oracle)
+             EXCEPT (MS SQL)
+
+* 합집합 호환(UNION Compatible)
+
+-- 합집합 호환(X)
+SELECT  번호, 이름, 이메일 FROM 정회원
+UNION
+SELECT 번호, 이름 FROM 준회원;
+-----------------------------------------
+-----------------------------------------
+-- [실습 1-1] 합집합(department, employee)
+
+-- 16-1) 김창섭이 속한 부서번호와 부서의 모든 부서번호를 합집합으로 검색하라 (UNION)
+-- 16-2) 김창섭이 속한 부서번호와 부서의 모든 부서번호를 합집합으로 검색하라 (UNION ALL)
+
+-- [실습 1-2] 조인(department, employee)
+
+-- 17) 사원의 이름과 이 사원이 속한 부서이름을 검색하라 (조인)
+
+-- 19) 사원에 대해서 부서이름, 사원이름, 직급, 급여를 검색하라.
+-- 부서이름에 대해서 오름차순, 부서이름이 같을 경우에는 salary에 대해서 내림차순으로 정렬하라
+
+/* -------------------------------------- */
+-- (quiz-booksr_deptemp-mysql.sql) 
+
+-- department(deptno, deptname, floor)                    
+-- employee(empno, empname, title, manager, salary, dno)
+
+drop table if exists employee;
+drop table if exists department;
+
+CREATE TABLE department (
+     deptno              int          NOT NULL ,
+     deptname          varchar(10) ,
+     floor                 int ,
+     PRIMARY KEY(deptno)
+);
+
+INSERT INTO department VALUES(1, '영업', 8);
+INSERT INTO department VALUES(2, '기획', 10);
+INSERT INTO department VALUES(3, '개발', 9);
+INSERT INTO department VALUES(4, '총무', 7);
+
+CREATE TABLE employee (
+    empno	         int	              NOT NULL,
+    empname     varchar(10)     UNIQUE,
+    title	         varchar(10)     DEFAULT '사원',
+    manager       int  ,
+    salary            int	 ,
+    dno              int	 ,
+    PRIMARY KEY(empno),
+    FOREIGN KEY(dno) REFERENCES department(deptno)
+);
+
+INSERT INTO employee VALUES(2106, '김창섭','대리',1003, 2500000, 2);
+INSERT INTO employee VALUES(3426, '박영권','과장',4377, 3000000, 1);
+INSERT INTO employee VALUES(3011, '이수민','부장',4377, 4000000, 3);
+INSERT INTO employee VALUES(1003, '조민희','과장',4377, 3000000, 2);
+INSERT INTO employee VALUES(3427, '최종철','사원',3011, 1500000, 3);
+INSERT INTO employee VALUES(1365, '김상원','사원',3426, 1500000, 1);
+INSERT INTO employee(empno, empname, title, salary, dno) VALUES(4377, '이성래','이사', 5000000, 2);
+
+select * from department;
+select * from employee;
+/* -------------------------------------- */
+
+-----------------------------------------
+-- [실습 2-1] 관계대수, 조인: (R1, R2)
+
+/* -------------------------------------- */
+drop table if exists R1;
+drop table if exists R2;
+
+CREATE TABLE R1 (
+	A char(2) ,
+	B char(2) ,
+              C char(2) 
+);
+
+CREATE TABLE R2 (
+	A char(2) ,
+	B char(2) ,
+              C char(2) 
+);
+
+INSERT INTO R1 VALUES ('a1','b1','c1');
+INSERT INTO R1 VALUES ('a2','b3','c3');
+INSERT INTO R1 VALUES ('a3','b4','c2');
+
+INSERT INTO R2 VALUES ('a1','b1','c1');
+INSERT INTO R2 VALUES ('a2','b3','c3');
+INSERT INTO R2 VALUES ('a3','b3','c1');
+
+select * from R1;
+select * from R2;
+/* -------------------------------------- */
+
+
+-----------------------------------------
+-----------------------------------------
+-- [실습 2-2] 관계대수, 조인: (마당서점: 고객, 도서, 주문)
+
+
+-- [실습 2-3] 관계대수, 조인: (마당서점: 고객, 도서, 주문)
+-- 박지성의 주문번호, 이름, 판매가격을 검색하라
+
+/* -------------------------------------- */
+/* (quiz-madang_book-k-mysql.sql)     */
+drop table if exists 주문;
+drop table if exists 고객;
+drop table if exists 도서;
+
+-- 고객(고객번호, 이름, 주민번호, 주소, 핸드폰)
+-- 도서(도서번호, 도서이름, 출판사, 가격)
+-- 주문(고객번호, 도서번호, 판매가격, 주문일자)
+
+CREATE TABLE  고객 (
+  고객번호      INT PRIMARY KEY,  
+  이름          VARCHAR(40),
+  주민번호      CHAR(14),
+  주소          VARCHAR(40),
+  핸드폰        VARCHAR(30)
+);
+
+CREATE TABLE 도서 (
+  도서번호      INT PRIMARY KEY,
+  도서이름      VARCHAR(40),
+  출판사        VARCHAR(40),
+  가격          INT 
+);
+
+CREATE TABLE 주문 (
+  고객번호 	INT  NOT NULL ,
+  도서번호	INT  NOT NULL ,
+  판매가격      INT,
+  주문일자      DATE ,
+  PRIMARY KEY(고객번호, 도서번호) ,
+  FOREIGN KEY (고객번호) REFERENCES 고객(고객번호) ,
+  FOREIGN KEY (도서번호) REFERENCES 도서(도서번호)
+);
+
+-- 고객(고객번호, 이름, 주민번호, 주소, 핸드폰)
+INSERT INTO 고객 VALUES (1, '박지성', '810101-1111111','영국 맨체스타', '000-5000-0001');
+INSERT INTO 고객 VALUES (2, '김연아', '900101-2222222','대한민국 서울', '000-6000-0001');  
+INSERT INTO 고객 VALUES (3, '장미란', '830101-2333333','대한민국 강원도', '000-7000-0001');
+INSERT INTO 고객 VALUES (4, '추신수', '820101-1444444','미국 클리블랜드', '000-8000-0001');
+
+-- 도서(도서번호, 도서이름, 출판사, 가격)
+INSERT INTO 도서 VALUES(1, '축구의 역사', '굿스포츠', 7000);
+INSERT INTO 도서 VALUES(2, '축구 아는 여자', '나무수', 13000);
+INSERT INTO 도서 VALUES(3, '축구의 이해', '대한미디어', 22000);
+INSERT INTO 도서 VALUES(4, '골프 바이블', '대한미디어', 35000);
+INSERT INTO 도서 VALUES(5, '피겨 교본', '굿스포츠', 8000);
+
+-- 주문(고객번호, 도서번호, 판매가격, 주문일자)
+INSERT INTO 주문 VALUES (1, 1, 7000, '2013-07-01'); 
+INSERT INTO 주문 VALUES (1, 2, 13000, '2013-07-03');
+INSERT INTO 주문 VALUES (2, 5, 8000, '2013-07-03'); 
+INSERT INTO 주문 VALUES (3, 2, 13000, '2013-07-04'); 
+INSERT INTO 주문 VALUES (4, 4, 35000, '2013-07-05');
+INSERT INTO 주문 VALUES (1, 3, 22000, '2013-07-07');
+INSERT INTO 주문 VALUES (4, 3, 22000, '2013-07-07');
+
+select * from 고객;
+select * from 도서;
+select * from 주문;
+/* -------------------------------------- */
+
+-----------------------------------------
+-----------------------------------------
+-- [실습 3-1] 관계대수: (정회원, 준회원)
+
+/* -------------------------------------- */
+/* member_set.sql */
+/* 집합연산 (합집합, 교집합, 차집합) */
+drop table if exists 정회원;
+drop table if exists 준회원;
+ 
+CREATE TABLE 정회원 (
+    번호 		INT 	PRIMARY KEY  ,
+    이름 		varCHAR(12) 	NOT NULL ,
+    주민번호 	CHAR(14) 	NOT NULL ,
+    휴대폰번호 	CHAR(14) 	NOT NULL,
+    이메일 	VARCHAR(30) ,
+    등록일 	CHAR(8)
+);
+
+CREATE TABLE 준회원 (
+    번호 		INT 	PRIMARY KEY  ,
+    이름 		varCHAR(12) 	NOT NULL ,
+    주민번호 	CHAR(14) 	NOT NULL ,
+    휴대폰번호 	CHAR(14) 	NOT NULL,
+    이메일 	VARCHAR(30) ,
+    등록일 	CHAR(8)
+);
+ 
+/* 정회원 데이터 입력 */
+
+INSERT INTO 정회원 ( 번호, 이름, 주민번호, 휴대폰번호, 이메일, 등록일)
+VALUES ( 1, '홍길동', '820416-1234567', '(011) 123-1231','gdhong@hitel.net','20070302');
+INSERT INTO 정회원 ( 번호, 이름, 주민번호, 휴대폰번호, 이메일, 등록일)
+VALUES ( 2, '임꺽정', '830507-2345678', '(010) 122-1222','jung@hanmail.net','20050422');
+ 
+/* 준회원 데이터 입력 */
+ 
+/* 참고) 집합연산 실습을 위해서 홍길동 동일한 데이터를 입력한다. 즉, 홍길동 은 정회원, 준회원 이다 */
+ 
+INSERT INTO 준회원 ( 번호, 이름, 주민번호, 휴대폰번호, 이메일, 등록일)
+VALUES ( 1, '홍길동', '820416-1234567', '(011) 123-1231','gdhong@hitel.net','20070302');
+INSERT INTO 준회원 ( 번호, 이름, 주민번호, 휴대폰번호, 이메일, 등록일)
+VALUES ( 3, '박찬호', '850321-1456789', '(010) 133-1231','chpark@hanmail.net','20090512');
+INSERT INTO 준회원 ( 번호, 이름, 주민번호, 휴대폰번호, 이메일, 등록일)
+VALUES ( 4, '선동열', '761122-1889911', '(010) 144-1222','sun@naver.com','20080605');
+ 
+SELECT * FROM 정회원;
+SELECT * FROM 준회원;
+/* -------------------------------------- */
+
+-----------------------------------------
+(quiz_sanup_algebra_stu.sql)
+
+-- 관계대수
+/* -------------------------------------- */
+-- 성적(이름, 국어, 영어, 수학, 과학)
+-- 학적부(이름, 주소, 나이)
+
+DROP TABLE if exists 학적부;
+DROP TABLE if exists 성적;
+
+CREATE TABLE 성적 (
+    이름 varchar(20) ,
+    국어 int ,
+    영어 int ,
+    수학 int ,
+    과학 int ,
+    PRIMARY KEY(이름)
+);
+
+CREATE TABLE 학적부 (
+    이름 varchar(20) ,
+    주소 varchar(50) ,
+    나이 int ,
+    PRIMARY KEY(이름) ,
+    FOREIGN KEY(이름) REFERENCES 성적(이름)
+);
+
+insert into 성적 values('고길동',70,90,78,88);
+insert into 성적 values('이순신',90,80,88,98);
+insert into 성적 values('둘리',80,68,98,78);
+insert into 성적 values('아무개',79,79,70,57);
+insert into 성적 values('임꺽정',67,98,80,84);
+
+insert into 학적부 values('고길동','모진동',25);
+insert into 학적부 values('이순신','화양동',20);
+insert into 학적부 values('둘리','자양동',24);
+insert into 학적부 values('아무개','화양동',19);
+insert into 학적부 values('임꺽정','구의동',18);
+
+select * from 성적;
+select * from 학적부;
+/* -------------------------------------- */
+-----------------------------------------
+-- 순수 관계 연산자
+
+-- 1) SELECTION
+-- 성적(이름, 국어, 영어, 수학, 과학)
+-- 학적부(이름, 주소, 나이)
+
+-- 예제1) <성적> 릴레이션에서 국어 점수가 80점 이상인 튜플들을 추출한다.
+
+-- 예제2) <성적> 릴레이션에서 국어 점수 또는 영어 점수가 80점 이상인 
+-- 튜플들을 추출한다.
+
+-- 2) PROJECT
+-- 예제) <성적> 릴레이션에서 이름과 국어 속성을 추출한다,
+
+-- 3) JOIN
+-- 예제) <성적> 릴레이션과 <학적부> 릴레이션으로부터 
+-- 이름 속성이 같은 튜플들을 결합하여 새로운 릴레이션을 생성한다.
+-----------------------------------------
+-----------------------------------------
+-- 일반 집합 연산자
+/* -------------------------------------- */
+-- 사원(사번, 이름)
+-- 직원(사번, 이름)
+
+DROP TABLE if exists 사원;
+DROP TABLE if exists 직원;
+
+CREATE TABLE 사원 (
+    사번 int ,
+    이름 varchar(20) ,
+    PRIMARY KEY(사원)
+);
+
+CREATE TABLE 직원 (
+    사번 int ,
+    이름 varchar(20) ,
+    PRIMARY KEY(사원)
+);
+
+insert into 사원 values(1, '고길동');
+insert into 사원 values(2, '이순신');
+
+insert into 직원 values(2, '이순신');
+insert into 직원 values(3, '둘리');
+
+select * from 사원;
+select * from 직원;
+/* -------------------------------------- */
+-- 사원(사번, 이름)
+-- 직원(사번, 이름)
+
+-- 예제1) <사원> 릴레이션과 <직원> 릴레이션에서 이름을 추출한 것의 합집합을 구한다.
+
+-- 예제2) <사원> 릴레이션과 <직원> 릴레이션에서 이름을 추출한 것의 차집합을 구한다.
+
+-- 예제3) <사원> 릴레이션과 <직원> 릴레이션에서 이름을 추출한 것의 차집합을 구한다.
+
+-- 예제4) <사원> 릴레이션과 <직원> 릴레이션에서 이름을 추출한 것의 카티션 프로덕트를 구한다.
+
+/* -------------------------------------- */
+-----------------------------------------
+-- 기출문제 문제1)
+
+-- 학생(학번, 이름, 학년, 학과)
+/* -------------------------------------- */
+-- 학생(학번, 이름, 학년, 학과)
+
+DROP TABLE if exists 학생;
+
+CREATE TABLE 학생 (
+    학번 char(4) ,
+    이름 varchar(20) ,
+    학년 int ,
+    학과 varchar(20) ,
+    PRIMARY KEY(학번)
+);
+
+insert into 학생 values('1001','나기태',4,'컴퓨터');
+insert into 학생 values('1002','송찬영',3,'전기');
+insert into 학생 values('1003','정연',1,'컴퓨터');
+insert into 학생 values('1004','박병화',4,'건축');
+insert into 학생 values('1005','김미나',1,'컴퓨터');
+
+select * from 학생;
+/* -------------------------------------- */
+-- 예1)
+
+-- 예2)
+
+-- 예3)
+/* -------------------------------------- */
+-----------------------------------------
+-- 기출문제 문제2)
+
+-- employee(empno, empname, dno)
+-- department(deptno, deptname)
+
+/* -------------------------------------- */
+-- employee(empno, empname, dno)
+-- department(deptno, deptname)
+
+DROP TABLE if exists employee;
+DROP TABLE if exists department;
+
+CREATE TABLE department (
+    deptno int ,
+    deptname varchar(20) ,
+    PRIMARY KEY(deptno)
+);
+
+CREATE TABLE employee (
+    empno char(4) ,
+    empname varchar(20) ,
+    dno int
+    PRIMARY KEY(empno) ,
+    FOREIGN KEY(dno) REFERENCES department(deptno)
+);
+
+insert into department values(1,'영업');
+insert into department values(2,'기획');
+insert into department values(3,'개발');
+insert into department values(4,'총무');
+
+insert into employee values('1234','김원호',2);
+insert into employee values('1235','박영주',1);
+insert into employee values('1236','이수미',3);
+insert into employee values('1237','조민수',2);
+insert into employee values('1238','최종인',3);
+
+select * from department;
+select * from employee;;
+/* -------------------------------------- */
+-- 예1) 동등조인
+
+-- 예2) 자연조인
+
+-- 예3) 왼쪽 외부조인
+/* -------------------------------------- */
+
+-----------------------------------------
+-- [Quiz 2] 다음 SQL 문법을 작성하시오
+-- (문제, SQL답안, 실행결과): department, employee
+
+-- department(deptno, deptname, floor)
+-- employee(empno, empname, title, manager, salary, dno)     
+-- 외래키 : dno  -> department(deptno)
+
+-- 부서(부서번호, 부서명, 위치)
+-- 사원(사번, 사원명, 직책, 관리자, 급여, 부서번호)
+
+-- [실습] SELECT 예제
+-- department(deptno, deptname, floor)
+-- employee(empno, empname, title, manager, salary, dno)     
+
+-- 부서(부서번호, 부서명, 위치)
+-- 사원(사번, 사원명, 직책, 관리자, 급여, 부서번호)
+
+-- 1) 부서의 모든 필드를 검색하라
+-- 2) 부서의 부서번호와 부서이름을 검색하라 (deptno는 부서번호, deptname은 부서이름 으로 검색)
+-- 3) 사원의 직급을 검색하라
+-- 4) 사원의 직급을 한번씩만 검색하라 (중복제거) (DISTINCT)
+-- 5) 2번 부서에 근무하는 사원들에 관한 모든 정보를 검색하라
+-- 6) 이씨 성을 가진 사원들의 이름, 직급, 부서번호를 검색하라
+-- 7) 직급이 과장이면서 1번 부서에서 근무하는 사원들의 이름과 급여를 검색하라
+-- 8) 직급이 과장이면서 1번 부서에 속하지 않은 사원들의 이름과 급여를 검색하라
+-- 9) 급여가 3000000원 이상이고, 4500000원 이하인 사원의 이름, 직급, 급여를 검색하라
+-- 9-1) BEWTEEN … AND 사용
+-- 9-2) 부등호 사용
+
+-- 10) 1번 부서나 3번 부서에 소속된 사원들에 관한 모든 정보를 검색하라 (IN 사용)
+-- 11) 직급이 과장인 사원들에 대하여 이름, 현재급여, 급여가 10% 인상됐을 때의 값을 검색하라
+-- 12) 2번 부서에 근무하는 사원들의 급여, 직급, 이름을 검색하여 급여의 오름차순으로 정렬하라
+-- 13) 사원들의 평균 급여와 최대급여를 검색하라
+-- 14) 사원들이 속한 부서번호별로 그룹화하고 부서번호, 평균급여, 최대급여를 검색하라
+-- 15) 사원들이 속한 부서번호별로 그룹화하고, 평균급여가 2500000원 이상인 
+-- 부서에 대해서 부서번호, 평균급여, 최대급여를 검색하라
+
+-- 16-1) 김창섭이 속한 부서번호와 부서의 모든 부서번호를 합집합으로 검색하라 (UNION)
+-- 16-2) 김창섭이 속한 부서번호와 부서의 모든 부서번호를 합집합으로 검색하라 (UNION ALL)
+
+-- 17) 사원의 이름과 이 사원이 속한 부서이름을 검색하라 (조인)
+
+-- 18) 사원에 대해서 사원이름과 직속상사의 이름을 검색하라(Self-Join)
+-- (문제풀이 안해도 됨) 
+
+-- 19) 사원에 대해서 부서이름, 사원이름, 직급, 급여를 검색하라.
+-- 부서이름에 대해서 오름차순, 부서이름이 같을 경우에는 salary에 대해서 내림차순으로 정렬하라
+
+/* -------------------------------------- */
+-- (quiz-booksr_deptemp-mysql.sql) 
+
+-- department(deptno, deptname, floor)                    
+-- employee(empno, empname, title, manager, salary, dno)
+
+drop table if exists employee;
+drop table if exists department;
+
+CREATE TABLE department (
+     deptno              int          NOT NULL ,
+     deptname          varchar(10) ,
+     floor                 int ,
+     PRIMARY KEY(deptno)
+);
+
+INSERT INTO department VALUES(1, '영업', 8);
+INSERT INTO department VALUES(2, '기획', 10);
+INSERT INTO department VALUES(3, '개발', 9);
+INSERT INTO department VALUES(4, '총무', 7);
+
+CREATE TABLE employee (
+    empno	         int	              NOT NULL,
+    empname     varchar(10)     UNIQUE,
+    title	         varchar(10)     DEFAULT '사원',
+    manager       int  ,
+    salary            int	 ,
+    dno              int	 ,
+    PRIMARY KEY(empno),
+    FOREIGN KEY(dno) REFERENCES department(deptno)
+);
+
+INSERT INTO employee VALUES(2106, '김창섭','대리',1003, 2500000, 2);
+INSERT INTO employee VALUES(3426, '박영권','과장',4377, 3000000, 1);
+INSERT INTO employee VALUES(3011, '이수민','부장',4377, 4000000, 3);
+INSERT INTO employee VALUES(1003, '조민희','과장',4377, 3000000, 2);
+INSERT INTO employee VALUES(3427, '최종철','사원',3011, 1500000, 3);
+INSERT INTO employee VALUES(1365, '김상원','사원',3426, 1500000, 1);
+INSERT INTO employee(empno, empname, title, salary, dno) VALUES(4377, '이성래','이사', 5000000, 2);
+
+select * from department;
+select * from employee;
+/* -------------------------------------- */
+
+/* -------------------------------------- */
+----------------------------------------------

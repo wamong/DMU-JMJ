@@ -73,18 +73,18 @@ select 성별, min(나이), max(나이) from 학생
 group by 성별;
 
 -- 예제5-11) 20대 학생만을 대상으로 나이별 학생수를 검색하시오
-﻿select 나이, count(나이) from 학생 
-where 나이 like '2%'
+select 나이, count(나이) from 학생 
+where 나이 like '2%' 
 group by 나이;
- 
+
 -- 예제5-12) 각 학년별로 2명 이상의 학생을 갖는 학년에 대해서만
 -- 학생별 학생수를 검색하시오
-﻿select 학년, count(*) from 학생
+select 학년, count(*) from 학생
 group by 학년
 having count(학년) >= 2;
  
 -- [실습 3] LIKE 연산자 / 널 값 검색 / 집합 연산자
-﻿-- 예제5-13) 이 씨 성을 가진 학생들의 학번과 학생 이름을 검색하시오
+-- 예제5-13) 이 씨 성을 가진 학생들의 학번과 학생 이름을 검색하시오
 select 학번, 이름 from 학생
 where 이름 like '이%';
 
@@ -125,6 +125,10 @@ where 학생.학번 = 수강.학번
 and 수강.과목번호 = 'c002';
 
 -- 2) (SELECT FROM ON 방법)
+select 학생.학번, 이름, 과목번호 (중간성적 * 0.1) as 변환중간성적 from 학생
+inner join 수강 on 학생.학번 = 수강.학번
+where 수강.과목번호 = 'c002';
+
 select 학생.학번, 이름, 과목번호 (중간성적 * 0.1) as 변환중간성적 from 학생
 inner join 수강 on 학생.학번 = 수강.학번
 where 수강.과목번호 = 'c002';

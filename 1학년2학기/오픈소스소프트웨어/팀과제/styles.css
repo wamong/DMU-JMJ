@@ -1,0 +1,174 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nanum Gothic', sans-serif; /* 세련된 폰트 */
+    background-color: #e0f7fa; /* 하늘색 배경 */
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4fb6c6;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+}
+
+.logo-and-menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo-and-menu h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 30px; /* 로고와 메뉴 간 간격 */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* 메뉴 간 거리 */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.title-and-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.title-and-login h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 15px 10px;
+    border-radius: 8px;
+    color: black;
+    margin-left: auto; /* 부모 컨테이너 내 오른쪽 끝으로 정렬 */
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-box input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-box button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #008394;
+}
+
+/* 인기 월드컵 리스트 */
+.worldcup-list {
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px; /* 넓이를 더 넓게 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.worldcup-list h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.worldcup-list ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.worldcup-list ul li {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease;
+    font-size: 18px;
+}
+
+.worldcup-list ul li:hover {
+    transform: scale(1.05);
+    background-color: #e0f7fa;
+}
+
+footer {
+    background-color: #008394;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 5px 0; /* 간격을 조정 */
+}

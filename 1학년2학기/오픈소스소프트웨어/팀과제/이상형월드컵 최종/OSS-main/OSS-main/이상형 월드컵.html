@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상형 월드컵 생성기</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .candidate-card {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .candidate-card img {
+      width: 100%;
+      max-width: 150px;
+      border-radius: 10px;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    #tournament-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+    }
+    .candidate-card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.5s, opacity 0.5s;
+      cursor: pointer;
+    }
+    .candidate-card img.selected {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.5);
+      z-index: 10;
+    }
+    .step h2 {
+      margin-bottom: 20px;
+    }
+    /* 추가된 메뉴 스타일 */
+    nav {
+      margin-bottom: 30px;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav ul li {
+      font-size: 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 네비게이션 메뉴 -->
+  <nav>
+    <ul>
+      <li><a href="홈 화면.html" id="home-link">홈</a></li>
+      <li><a href="마이페이지.html" id="mypage-link">마이페이지</a></li>
+      <li><a href="이상형 월드컵.html" id="create-link" onclick="checkLogin(event)">이상형 월드컵 만들기</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1 class="text-center my-4">이상형 월드컵 생성기</h1>
+
+    <!-- Step 1: 후보 사진 업로드 -->
+    <div id="step-upload" class="step active">
+      <h2>1. 후보 사진 업로드</h2>
+      <input type="file" id="candidate-photo" accept="image/*" multiple class="form-control my-3" />
+      <button class="btn btn-primary w-100" onclick="saveCandidates()">후보 저장</button>
+    </div>
+
+    <!-- Step 2: 후보 이름 입력 -->
+    <div id="step-candidate" class="step">
+      <h2>2. 후보 이름 입력</h2>
+      <div id="candidate-list"></div>
+      <button class="btn btn-success w-100" onclick="saveCandidateNames()">후보 이름 저장</button>
+    </div>
+
+    <!-- Step 3: 대회 타이틀 입력 -->
+    <div id="step-title" class="step">
+      <h2>3. 대회 타이틀 입력</h2>
+      <input type="text" id="tournament-title" class="form-control my-3" placeholder="대회 타이틀 입력" />
+      <button class="btn btn-primary w-100" onclick="saveTournament()">대회 저장</button>
+    </div>
+
+    <!-- Step 4: 강 수 선택 -->
+    <div id="step-round" class="step">
+      <h2>4. 강 수 선택</h2>
+      <select id="rounds" class="form-select my-3">
+        <option value="4">4강</option>
+        <option value="8">8강</option>
+        <option value="16">16강</option>
+        <option value="32">32강</option>
+        <option value="64">64강</option>
+      </select>
+      <button class="btn btn-success w-100" onclick="startTournament()">대회 시작</button>
+    </div>
+
+    <!-- Step 5: 대회 진행 -->
+    <div id="step-main" class="step">
+      <h2 id="tournament-title-display">대회 진행 중...</h2>
+      <div id="tournament-container"></div>
+    </div>
+  </div>
+
+  <script>
+    let candidates = [];
+    let tournament = { title: '', rounds: 0, currentRound: [] };
+    let currentStep = 0;
+
+    function showStep(step) {
+      document.querySelectorAll('.step').forEach((el, idx) => {
+        el.classList.toggle('active', idx === step);
+      });
+    }
+
+    function saveCandidates() {
+      const files = document.getElementById('candidate-photo').files;
+      candidates = Array.from(files).map(file => ({ photo: file, name: '' }));
+      
+      const candidateList = document.getElementById('candidate-list');
+      candidateList.innerHTML = '';
+
+      candidates.forEach((candidate, index) => {
+        const div = document.createElement('div');
+        div.className = 'candidate-card';
+        div.innerHTML = `
+          <img src="${URL.createObjectURL(candidate.photo)}" alt="후보 사진">
+          <input type="text" class="form-control my-2" placeholder="후보 이름" data-index="${index}">
+        `;
+        candidateList.appendChild(div);
+      });
+
+      currentStep++;
+      showStep(currentStep);
+    }
+
+    function saveCandidateNames() {
+      document.querySelectorAll('#candidate-list input').forEach(input => {
+        const index = input.dataset.index;
+        candidates[index].name = input.value || `후보 ${+index + 1}`;
+      });
+
+      currentStep++;
+      showStep(currentStep);
+    }
+
+    function saveTournament() {
+      tournament.title = document.getElementById('tournament-title').value || '무제 월드컵';
+      currentStep++;
+      showStep(currentStep);
+    }
+
+    function startTournament() {
+      tournament.rounds = parseInt(document.getElementById('rounds').value, 10);
+      tournament.currentRound = [...candidates];
+      tournament.currentRound.length = tournament.rounds; // 강 수에 맞게 자르기
+      currentStep++;
+      document.getElementById('tournament-title-display').textContent = `${tournament.title} (${tournament.rounds}강)`;
+      showMatch();
+      showStep(currentStep);
+    }
+
+    function showMatch() {
+      const container = document.getElementById('tournament-container');
+      container.innerHTML = '';
+
+      if (tournament.currentRound.length === 1) {
+        alert(`${tournament.currentRound[0].name} 우승!`);
+        location.reload(); // 초기화
+        return;
+      }
+
+      const [first, second] = tournament.currentRound.splice(0, 2);
+
+      [first, second].forEach(candidate => {
+        const div = document.createElement('div');
+        div.className = 'candidate-card';
+        div.innerHTML = `
+          <img src="${URL.createObjectURL(candidate.photo)}" alt="${candidate.name}">
+          <p>${candidate.name}</p>
+        `;
+        div.querySelector('img').onclick = () => selectWinner(candidate);
+        container.appendChild(div);
+      });
+    }
+
+    function selectWinner(winner) {
+      const images = document.querySelectorAll('#tournament-container img');
+      images.forEach(img => {
+        if (img.alt === winner.name) {
+          img.classList.add('selected');
+        } else {
+          img.style.opacity = '0';
+        }
+      });
+
+      setTimeout(() => {
+        tournament.currentRound.push(winner);
+        showMatch();
+      }, 1000);
+    }
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>

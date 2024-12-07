@@ -1,0 +1,131 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nanum Gothic', sans-serif; /* 세련된 폰트 */
+    background-color: #e0f7fa; /* 하늘색 배경 */
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4fb6c6;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+}
+
+.logo-and-menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo-and-menu h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 30px; /* 로고와 메뉴 간 간격 */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* 메뉴 간 거리 */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 메인 내용 */
+main {
+    padding: 40px 20px 80px;
+    text-align: left;
+}
+.my{
+padding-left: 20%;}
+/* 마이페이지 스타일 */
+.mypage {
+    height: 500px;
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: top; /* 세로 중앙 정렬 */
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 60%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 30px; /* 요소 간 간격 */
+    padding-top:40px;
+}
+
+.profile-photo img {
+    width: 100%; /* 프로필 사진 크기 */
+    height: 60%;
+    border-radius: 50%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    padding-top:30px;
+    justify-content: top;
+    gap: 10px; /* 텍스트 간 간격 */
+}
+
+.info-ex {
+    display: flex;
+    align-items: center; /* 라벨과 텍스트 정렬 */
+}
+
+.info-ex h2 {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #4fb6c6; /* 라벨 색상 */
+}
+
+.info-ex p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* 푸터 스타일 */
+footer {width:100%;
+    position: absolute;
+    background-color: #008394;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    bottom: 0;
+
+}
+

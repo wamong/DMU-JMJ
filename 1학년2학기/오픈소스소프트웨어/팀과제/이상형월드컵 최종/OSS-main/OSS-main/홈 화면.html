@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이상형 월드컵</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-and-menu">
+                <h1><a href="#" id="home-link">PICK PARADE</a></h1>
+                <nav>
+                    <ul>
+                        <li><a href="홈 화면.html" id="home-link">홈</a></li>
+                        <li><a href="마이페이지.html" id="mypage-link">마이페이지</a></li>
+                        <!-- ID를 create-link로 통일 -->
+                        <li><a href="이상형 월드컵.html" id="create-link" onclick="checkLogin(event)">이상형 월드컵 만들기</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="title-and-login">
+            <h2>당신의 이상형을 찾아보세요!</h2>
+            <div class="login-box" id="login-box">
+                <!-- 로그인 폼 (로그인 전 상태) -->
+                <form id="login-form">
+                    <input type="text" placeholder="아이디" required>
+                    <input type="password" placeholder="비밀번호" required>
+                    <button type="submit">로그인</button>
+                </form>
+
+                <!-- 로그인 후 상태 -->
+                <div id="profile-info" style="display: none;">
+                    <img src="프사.jpg" alt="프로필 사진" id="프사.jpg" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <p id="nickname">골라조</p>
+                    <button id="logout-button">로그아웃</button> <!-- 로그아웃 버튼 -->
+                </div>
+            </div>
+        </div>
+        
+        <p>아래에서 인기 월드컵을 확인하거나 직접 제작해 보세요.</p>
+
+        <div class="worldcup-list">
+            <h3>인기 월드컵</h3>
+            <ul id="worldcup-items">
+                <li><a href="https://www.piku.co.kr/w/3nP58w" target="_blank">
+                    <img src="여배우.PNG" style="width: 300px; height: 300px;" alt="여자 배우 이상형 월드컵 (샘플)">
+                </a>여자 배우 이상형 월드컵 (샘플)</li>
+
+                <li><a href="https://www.piku.co.kr/w/8lm5Px" target="_blank">
+                    <img src="남배우.PNG" style="width: 300px; height: 300px;" alt="남자 배우 이상형 월드컵 (샘플)">
+                </a>남자 배우 이상형 월드컵 (샘플)</li>
+                
+                <li><a href="https://www.piku.co.kr/w/2VBHch" target="_blank">
+                    <img src="남돌.PNG" style="width: 300px; height: 300px;" alt="남자 아이돌 이상형 월드컵 (샘플)">
+                </a>남자 아이돌 이상형 월드컵 (샘플)</li>
+
+                <li><a href="https://www.piku.co.kr/w/8mrRFN" target="_blank">
+                    <img src="여돌.PNG" style="width: 300px; height: 300px;" alt="여자 아이돌 이상형 월드컵 (샘플)">
+                </a>여자 아이돌 이상형 월드컵 (샘플)</li>
+              
+                <li><a href="https://www.piku.co.kr/w/8Km1Q0" target="_blank">
+                    <img src="음식.PNG" style="width: 300px; height: 300px;" alt="음식 월드컵 (샘플)">
+                </a>음식 월드컵 (샘플)</li>
+
+                <li><a href="https://www.piku.co.kr/w/2VBHch" target="_blank">
+                    <img src="드라마.PNG" style="width: 300px; height: 300px;" alt="한국 드라마 월드컵 (샘플)">
+                </a>한국 드라마 월드컵 (샘플)</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 이상형 월드컵</p>
+        <p>만든 이: 골라조</p>
+    </footer>
+
+    <script>
+        // 가상 유저 데이터 (서버와 연결 시 실제 DB로 대체)
+        const fakeUsers = [
+            { username: "rhffkwh", password: "1234" },
+            { username: "dhthth", password: "5678" },
+        ];
+    
+        // DOM 요소 참조
+        const loginForm = document.getElementById("login-form");
+        const profileInfo = document.getElementById("profile-info");
+    
+        // 페이지 로드 시 로그인 상태 확인 및 초기화
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+            const username = localStorage.getItem("username");
+    
+            if (isLoggedIn === "true") {
+                showProfile(username);
+            } else {
+                loginForm.style.display = "block";
+                profileInfo.style.display = "none";
+            }
+        });
+    
+        // 로그인 폼 동작 추가
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+    
+            const username = this.querySelector("input[type='text']").value;
+            const password = this.querySelector("input[type='password']").value;
+    
+            const user = fakeUsers.find((u) => u.username === username && u.password === password);
+            if (user) {
+                alert("로그인 성공!");
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("username", username);
+                showProfile(username);
+            } else {
+                alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+            }
+        });
+    
+        // 프로필 UI 표시 함수
+        function showProfile(username) {
+            loginForm.style.display = "none";
+            profileInfo.style.display = "block";
+            document.getElementById("nickname").textContent = username || "골라조";
+        }
+    
+        // 로그아웃 버튼 동작 추가
+        document.getElementById("logout-button").addEventListener("click", function () {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("username");
+            alert("로그아웃 되었습니다.");
+            location.reload();
+        });
+    
+        // 로그인 확인 함수
+        function checkLogin(event) {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+    
+            if (isLoggedIn !== "true") {
+                // 로그인하지 않은 경우
+                event.preventDefault(); // 기본 링크 이동 동작 취소
+                alert("로그인 후 이용 가능합니다.");
+            }
+        }
+    
+        // 마이페이지 접근 확인 추가
+        document.getElementById("mypage-link").addEventListener("click", checkLogin);
+        document.getElementById("create-link").addEventListener("click", checkLogin);
+    </script>
+    
+</body>
+</html>

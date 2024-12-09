@@ -14,7 +14,7 @@ body {
 
 header {
     background-color: #4fb6c6;
-    padding: 15px 20px;
+    padding: 17px 40px;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -108,7 +108,7 @@ padding-left: 20%;}
 
 .info-ex h2 {
     font-size: 18px;
-    margin-right: 10px;
+    margin-right: 20px;
     color: #4fb6c6; /* 라벨 색상 */
 }
 

@@ -12,7 +12,7 @@
   }
   header {
     background-color: #4fb6c6;
-    padding: 15px 20px;
+    padding: 15px 40px;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -24,6 +24,13 @@
     font-size: 24px;
     font-weight: bold;
   }
+  .headercontainer {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+  }
+ 
   .container {
     display: flex;
     justify-content: center; /* 중앙 정렬 */
@@ -32,7 +39,7 @@
   }
 
   .logo-and-menu {
-  display: flex;
+  display: flex; 
   align-items: center;
   }
 
@@ -45,14 +52,14 @@
   }
 
   nav ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
     gap: 30px;
   }
 
   nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: white;
     font-size: 16px;
   }
   nav ul li a:hover {
@@ -86,8 +93,8 @@
     position: relative;
   }
   .candidate-card img {
-    width: 150px;
-    height: 150px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
     transition: transform 0.5s, opacity 0.5s;
     cursor: pointer;
@@ -110,4 +117,5 @@
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-  }
+    
+}

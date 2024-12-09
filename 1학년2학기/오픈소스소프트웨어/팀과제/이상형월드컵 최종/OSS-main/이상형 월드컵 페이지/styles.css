@@ -14,7 +14,7 @@ body {
 
 header {
     background-color: #4fb6c6;
-    padding: 15px 20px;
+    padding: 17px 40px;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,7 @@ header h1 a {
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     display: flex;
     gap: 30px; /* 메뉴 간 거리 */
 }

@@ -19,13 +19,14 @@
                 <ul>
                     <li><a href="홈 화면.html" id="home-link">홈</a></li>
                     <li><a href="마이페이지.html" id="mypage-link">마이페이지</a></li>
+                    <!-- ID를 create-link로 통일 -->
                     <li><a href="이상형 월드컵.html" id="create-link" onclick="checkLogin(event)">이상형 월드컵 만들기</a></li>
                 </ul>
             </nav>
         </div>
     </div>
   </header>
-
+<main></main>
   <div class="container">
     <h1 class="text-center my-4">이상형 월드컵 생성기</h1>
 
@@ -114,25 +115,12 @@
 
     function saveTournament() {
       tournament.title = document.getElementById('tournament-title').value || '무제 월드컵';
-      
-      // 로컬 스토리지에 대회 정보 저장
-      const savedTournaments = JSON.parse(localStorage.getItem('tournaments')) || [];
-      savedTournaments.push({ title: tournament.title, candidates: candidates.map(c => ({ name: c.name, photo: URL.createObjectURL(c.photo) })) });
-      localStorage.setItem('tournaments', JSON.stringify(savedTournaments));
-      
       currentStep++;
       showStep(currentStep);
     }
 
     function startTournament() {
       tournament.rounds = parseInt(document.getElementById('rounds').value, 10);
-      
-      // 대회가 시작되기 전에 후보가 있는지 확인
-      if (candidates.length === 0) {
-        alert('후보가 없습니다. 먼저 후보를 추가하세요.');
-        return;
-      }
-
       tournament.currentRound = [...candidates];
       tournament.currentRound.length = tournament.rounds; // 강 수에 맞게 자르기
       currentStep++;
@@ -183,5 +171,6 @@
 
     showStep(currentStep);
   </script>
+</main>
 </body>
 </html>

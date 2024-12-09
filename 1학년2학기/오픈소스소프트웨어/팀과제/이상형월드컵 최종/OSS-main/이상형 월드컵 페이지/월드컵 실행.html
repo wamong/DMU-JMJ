@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상형 월드컵</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="iwc.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 네비게이션 메뉴 -->
+  <header>
+    <div class="container">
+        <div class="logo-and-menu">
+            <h1><a href="#" id="home-link">PICK PARADE</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="홈 화면.html" id="home-link">홈</a></li>
+                    <li><a href="마이페이지.html" id="mypage-link">마이페이지</a></li>
+                    <li><a href="이상형 월드컵.html" id="create-link" onclick="checkLogin(event)">이상형 월드컵 만들기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="text-center my-4">이상형 월드컵</h1>
+
+    <!-- Step 5: 대회 진행 -->
+    <div id="step-main" class="step active">
+      <h2 id="tournament-title-display">대회 진행 중...</h2>
+      <div id="tournament-container"></div>
+    </div>
+  </div>
+
+  <script>
+    let tournament = { title: '', currentRound: [] };
+
+    // 페이지 로드 시 대회 정보 불러오기
+    window.onload = function() {
+      const currentTournament = JSON.parse(localStorage.getItem('currentTournament'));
+      if (currentTournament) {
+        tournament.title = currentTournament.title;
+        tournament.currentRound = currentTournament.candidates.map(c => ({ 
+          name: c.name, 
+          photo: c.photo 
+        }));
+        document.getElementById('tournament-title-display').textContent = `${tournament.title} 대회가 시작됩니다!`;
+        showMatch();
+      }
+    };
+
+    function showMatch() {
+      const container = document.getElementById('tournament-container');
+      container.innerHTML = '';
+
+      if (tournament.currentRound.length === 1) {
+        alert(`${tournament.currentRound[0].name} 우승!`);
+        location.reload(); // 초기화
+        return;
+      }
+
+      const [first, second] = tournament.currentRound.splice(0, 2);
+
+      [first, second].forEach(candidate => {
+        const div = document.createElement('div');
+        div.className = 'candidate-card';
+        div.innerHTML = `
+          <img src="${candidate.photo}" alt="${candidate.name}">
+          <p>${candidate.name}</p>
+        `;
+        div.querySelector('img').onclick = () => selectWinner(candidate);
+        container.appendChild(div);
+      });
+    }
+
+    function selectWinner(winner) {
+      const images = document.querySelectorAll('#tournament-container img');
+      images.forEach(img => {
+        if (img.alt === winner.name) {
+          img.classList.add('selected');
+        } else {
+          img.style.opacity = '0';
+        }
+      });
+
+      setTimeout(() => {
+        tournament.currentRound.push(winner);
+        showMatch();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

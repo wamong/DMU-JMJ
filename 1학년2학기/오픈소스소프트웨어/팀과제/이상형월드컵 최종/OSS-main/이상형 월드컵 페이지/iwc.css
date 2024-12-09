@@ -1,0 +1,113 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Nanum Gothic', sans-serif; /* 세련된 폰트 */
+    background-color: #e0f7fa; /* 하늘색 배경 */
+    color: #333;
+    line-height: 1.6;
+  }
+  header {
+    background-color: #4fb6c6;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .container {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    flex-direction: column; /* 세로 방향으로 배치 */
+    width: 100%;
+  }
+
+  .logo-and-menu {
+  display: flex;
+  align-items: center;
+  }
+
+  .logo-and-menu h1 a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 30px; /* 로고와 메뉴 간 간격 */
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+  }
+  nav ul li a:hover {
+  text-decoration: underline;
+  }
+  main {
+  padding: 40px 20px;
+  text-align: center;
+  }
+  .step {
+    display: none;
+  }
+  .step.active {
+    display: block;
+  }
+  .candidate-card {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .candidate-card img {
+    width: 100%; /* 폭을 100%로 설정 */
+    height: auto; /* 비율을 유지하면서 높이를 자동으로 설정 */
+    object-fit: cover; /* 이미지의 비율을 유지하면서 영역을 채우기 */
+  }
+  
+  #tournament-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+  }
+  .candidate-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.5s, opacity 0.5s;
+    cursor: pointer;
+  }
+  .candidate-card img.selected {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 10;
+  }
+  .step h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  footer {
+    background-color: #008394;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }

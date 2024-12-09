@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이상형 월드컵</title>
-    <link rel="stylesheet" href="mypage-final.css">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="mypage-final.css"> <!-- CSS 파일 링크 -->
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +15,14 @@
                 <nav>
                     <ul>
                         <li><a href="홈 화면.html" id="home-link">홈</a></li>
-                        <li><a href="마이페이지.html" id="mypage-link">마이페이지 </a></li>
+                        <li><a href="마이페이지.html" id="mypage-link">마이페이지</a></li>
                         <li><a href="이상형 월드컵.html" id="create-link" onclick="checkLogin()">이상형 월드컵 만들기</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
+
     <main>
         <h2 class="my">마이페이지</h2>
         <div class="mypage">
@@ -32,9 +33,11 @@
             <div class="info">
                 <div class="info-ex"><h2>아이디</h2><p>rhffkwh</p></div>
                 <div class="info-ex"><h2>닉네임</h2><p>gollajo</p></div>
-                <div class="info-past"></div>
-            </ul>
-        </div>
+                <div class="info-past">
+                    <h2>내가 만든 월드컵</h2>
+                    <ul id="tournament-list"></ul>
+                </div>
+            </div>
         </div>
     </main>
     
@@ -42,5 +45,54 @@
         <p>© 2024 이상형 월드컵</p>
         <p>만든 이: 골라조</p>
     </footer>
+
+    <script>
+        // 로컬 스토리지에서 데이터 가져오기
+        const savedTournaments = JSON.parse(localStorage.getItem('tournaments')) || [];
+        const tournamentList = document.getElementById('tournament-list');
+        
+        if (savedTournaments.length === 0) {
+            tournamentList.innerHTML = '<li>생성된 월드컵이 없습니다.</li>';
+        } else {
+            savedTournaments.forEach((tournament, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="#" onclick="startTournament('${tournament.title}')">${tournament.title}</a>
+                    <button onclick="editTournament(${index})">수정</button>
+                    <button onclick="deleteTournament(${index})">삭제</button>
+                `;
+                tournamentList.appendChild(listItem);
+            });
+        }
+
+        function startTournament(title) {
+            const tournaments = JSON.parse(localStorage.getItem('tournaments')) || [];
+            const tournament = tournaments.find(t => t.title === title);
+            if (tournament) {
+                localStorage.setItem('currentTournament', JSON.stringify(tournament));
+                location.href = '월드컵 실행.html';
+            }
+        }
+
+        function editTournament(index) {
+            const tournaments = JSON.parse(localStorage.getItem('tournaments')) || [];
+            const newTitle = prompt("새로운 대회 제목을 입력하세요:", tournaments[index].title);
+            if (newTitle) {
+                tournaments[index].title = newTitle;
+                localStorage.setItem('tournaments', JSON.stringify(tournaments));
+                location.reload(); // 페이지 새로 고침
+            }
+        }
+
+        function deleteTournament(index) {
+            const tournaments = JSON.parse(localStorage.getItem('tournaments')) || [];
+            if (confirm("정말로 이 대회를 삭제하시겠습니까?")) {
+                tournaments.splice(index, 1);
+                localStorage.setItem('tournaments', JSON.stringify(tournaments));
+                location.reload(); // 페이지 새로 고침
+            }
+        }
+    </script>
 </body>
 </html>
+    

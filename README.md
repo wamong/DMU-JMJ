@@ -2,7 +2,6 @@
 <br>
 
 <!--타이틀 부분-->
-![IMG_3390](https://github.com/user-attachments/assets/60a8c2ee-d644-48c4-be51-97e3fc567968)
 
 <!--내용 부분-->
 <h3 align="center">✨ Tech Stack ✨</h3>
@@ -58,14 +57,11 @@
 
 <h3 align="center">📫 Contact 📫</h3>
 <div align="center">
-  <a href="https://www.instagram.com/xeuvoxo">
+  <a href="https://www.instagram.com/wa._.mong">
     <img src="https://img.shields.io/badge/instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>&nbsp
   </a>
-  <a href="mailto:youmin0321@naver.com">
+  <a href="mailto:abcd675@naver.com">
     <img src="https://img.shields.io/badge/youmin0321@naver.com-03C75A?style=for-the-badge&logo=naver&logoColor=white"/>&nbsp
-  </a>
-  <a href="https://yu-ming.tistory.com">
-    <img src="https://img.shields.io/badge/Tistory-000000?style=for-the-badge&logo=tistory&logoColor=white"/>&nbsp
   </a>
 </div>
 

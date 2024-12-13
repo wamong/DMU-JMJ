@@ -4,8 +4,7 @@
 
 ### OSS 내용 정리
 
-[ 1주차 오리엔테이션 ]
-
+[ 1주차 오리엔테이션 ](https://github.com/wamong/DMU-JMJ/blob/main/%EC%9D%80%EB%B9%84%EB%B0%94%EB%B3%B4.md)
 [▶ 2주차 학습](https://github.com/wamong/DMU-JMJ/blob/main/1학년2학기/오픈소스소프트웨어/OSS주차별정리/OSS_2week.md)
 
 [▶ 3주차 학습](https://github.com/wamong/DMU-JMJ/blob/main/1학년2학기/오픈소스소프트웨어/OSS주차별정리/OSS_3week.md)

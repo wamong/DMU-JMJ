@@ -1,32 +1,32 @@
-#### 2024 오픈소스소프트웨어 교과목 정리 💻
-## OSS 교과목 내용 정리
+## OSS 외에도 대학생활 중 이수 과목들의 수업, 과제 내용 정리
 
-3개씩 묶어서 총 10주차로 나누어 정리 ❗
+### OSS 내용 정리
+
 [ 1주차 오리엔테이션 ]
 
-[✓ 2주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 2주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_2week.md)
 
-[✓ 3주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 3주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_3week.md)
 
-[✓ 4주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 4주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_4week.md)
 
-[✓ 5주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 5주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_5week.md)
 
 [ 6주차 대면수업 ]
 
-[✓ 7주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 7주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_7week.md)
 
-[✓ 8주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 8주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_8week.md)
 
 [ 9주차 중간고사 ]
 
-[✓ 10주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 10주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_10week.md)
 
-[✓ 11주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 11주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_11week.md)
 
-[✓ 12주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 12주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_12week.md)
 
-[✓ 13주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리)
+[✓ 13주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_13week.md)
 
 [ 14주차 대면수업 ]
 

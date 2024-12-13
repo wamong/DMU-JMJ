@@ -1,9 +1,6 @@
 # # 04. 깃 설치와 실행
 
----
-
 ## 1. 깃 설치와 편집기 설정
----
 
 Visual Studio code로 설정
 - 새 저장소의 기본 브랜치 이름 설정
@@ -21,9 +18,9 @@ C:\Program Files\Git
 - $ git config --list: 설정 확인
 - $ git --help: 도움
 
-# # 05. 깃 설정과 저장소 생성
-
 ---
+
+# # 05. 깃 설정과 저장소 생성
 
 ## 1. 깃 설정 범위와 명령
 
@@ -45,8 +42,6 @@ $ git config --global core.editor 'code --wait'
 ✓기본 브랜치 이름
 $ git config --global init.defaultBranch main
 
----
-
 ## 2. 저장소 생성
 
 - git init: 디렉토리를 git repository로 만들어야 git으로 버전 관리가 가능
@@ -67,8 +62,6 @@ For using 현재 디렉토리를 git repository로 만들기
 ---
 
 # # 06. 비주얼 스튜디오와 리눅스 명령어
-
----
 
 ### 비주얼 스튜디오 코드
 

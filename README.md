@@ -1,72 +1,33 @@
-                          
-<br>
+## OSS 외에도 대학생활 중 이수 과목들의 수업, 과제 내용 정리
 
-<!--타이틀 부분-->
+### OSS 내용 정리
 
-<!--내용 부분-->
-<h3 align="center">✨ Tech Stack ✨</h3>
-<div align="center">
-  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />&nbsp
-  <img src="https://img.shields.io/badge/c-3578E5.svg?style=for-the-badge&logo=c&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/c-sharp-1daabb.svg?style=for-the-badge&logo=c-sharp&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/html5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" />&nbsp
-</div>
+[ 1주차 오리엔테이션 ]
 
-<div align="center">
-  <img src="https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/numpy-4d77cf.svg?style=for-the-badge&logo=numpy&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/mysql-11557c.svg?style=for-the-badge&logo=mysql&logoColor=white" />&nbsp
-</div>
+[✓ 2주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_2week.md)
 
-<div align="center">
-   <img src="https://img.shields.io/badge/mac-OS-000000.svg?style=for-the-badge&logo=macOS&logoColor=white" />&nbsp
-    <img src="https://img.shields.io/badge/windows-0078D6.svg?style=for-the-badge&logo=windows&logoColor=white" />&nbsp
+[✓ 3주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_3week.md)
 
-</div>
+[✓ 4주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_4week.md)
 
-<br>
+[✓ 5주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_5week.md)
 
-<h3 align="center">📚 Studying 📚</h3>
-<div align="center">
-  <img src="https://img.shields.io/badge/chatbot-007ACC.svg?style=for-the-badge&logo=chatbot&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/androidstudio-3DDC84.svg?style=for-the-badge&logo=androidstudio&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/unity-2C2C32.svg?style=for-the-badge&logo=unity&logoColor=white" />&nbsp
-</div>
+[ 6주차 대면수업 ]
 
-<br>
+[✓ 7주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_7week.md)
 
-<h3 align="center">🛠 Tools 🛠</h3>
-<div align="center">
-  <img src="https://img.shields.io/badge/git-F05033.svg?style=for-the-badge&logo=git&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/Notion-F3F3F3.svg?style=for-the-badge&logo=notion&logoColor=black" />&nbsp
-</div>
+[✓ 8주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_8week.md)
 
-<div align="center">
-  <img src="https://img.shields.io/badge/google%20colab-F9AB00?style=for-the-badge&logo=google%20colab&logoColor=white" />&nbsp
-  <img src="https://img.shields.io/badge/figma-F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" />&nbsp
-</div>
+[ 9주차 중간고사 ]
 
-<div align="center">
-  <img src="https://img.shields.io/badge/VSCode-2C2C32.svg?style=for-the-badge&logo=visual-studio&logoColor=22ABF3" />&nbsp
-  <img src="https://img.shields.io/badge/pycharm-2C2C32.svg?style=for-the-badge&logo=pycharm&logoColor=22ABF3" />&nbsp
-</div>
+[✓ 10주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_10week.md)
 
-<br>
+[✓ 11주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_11week.md)
 
-<h3 align="center">📫 Contact 📫</h3>
-<div align="center">
-  <a href="https://www.instagram.com/wa._.mong">
-    <img src="https://img.shields.io/badge/instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>&nbsp
-  </a>
-  <a href="mailto:abcd675@naver.com">
-    <img src="https://img.shields.io/badge/youmin0321@naver.com-03C75A?style=for-the-badge&logo=naver&logoColor=white"/>&nbsp
-  </a>
-</div>
+[✓ 12주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_12week.md)
 
-<br> 
+[✓ 13주차 학습](https://github.com/wamong/DMU-JMJ/1학년2학기/오픈소스소프트웨어/OSS 주차별 정리/OSS_13week.md)
 
+[ 14주차 대면수업 ]
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wamong)](https://github.com/anuraghazra/github-readme-stats)
-[![wamong's GitHub stats](https://github-readme-stats.vercel.app/api?username=wamong)](https://github.com/anuraghazra/github-readme-stats)
+[ 15주차 기말고사 ]
